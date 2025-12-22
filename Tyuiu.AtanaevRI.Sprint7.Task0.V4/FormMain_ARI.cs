@@ -1,10 +1,11 @@
 ﻿using Tyuiu.AtanaevRI.Sprint7.Task0.V4.Lib;
+using System.Drawing;
 
 namespace Tyuiu.AtanaevRI.Sprint7.Task0.V4
 {
     public partial class FormMain_ARI : Form
     {
-        private DataService _dataService;
+        private DataService _dataService = null!;
         private readonly string _dataPath = Path.Combine(Application.StartupPath, "Data");
 
         public FormMain_ARI()
@@ -15,11 +16,11 @@ namespace Tyuiu.AtanaevRI.Sprint7.Task0.V4
             buttonReaders_ARI.Image = SystemIcons.Information.ToBitmap();
             buttonLoans_ARI.Image = SystemIcons.Question.ToBitmap();
             buttonStatistics_ARI.Image = SystemIcons.Warning.ToBitmap();
-         
+
             buttonExit_ARI.Image = SystemIcons.Error.ToBitmap();
 
             // Для меню
-   
+
             menuItemExit_ARI.Image = SystemIcons.Error.ToBitmap();
             menuItemAbout_ARI.Image = SystemIcons.Information.ToBitmap();
 
@@ -140,7 +141,7 @@ namespace Tyuiu.AtanaevRI.Sprint7.Task0.V4
 
         private void MenuItemAbout_ARI_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Библиотечная система v4.0\nРазработчик: ARI\n© 2024",
+            MessageBox.Show("Библиотечная система \nРазработчик: Атанаев Р.И.\n© 2025",
                 "О программе", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -184,6 +185,11 @@ namespace Tyuiu.AtanaevRI.Sprint7.Task0.V4
                 ButtonSave_ARI_Click(sender, e);
             }
         }
+
+        private void FormMain_ARI_Load(object sender, EventArgs e)
+        {
+
+        }
     }
-    
-    }
+
+}
