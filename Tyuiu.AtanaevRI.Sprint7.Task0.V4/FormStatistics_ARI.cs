@@ -1,5 +1,6 @@
 ﻿using Tyuiu.AtanaevRI.Sprint7.Task0.V4.Lib;
 using System.Windows.Forms.DataVisualization.Charting;
+
 namespace Tyuiu.AtanaevRI.Sprint7.Task0.V4
 {
     public partial class FormStatistics_ARI : Form
@@ -17,14 +18,14 @@ namespace Tyuiu.AtanaevRI.Sprint7.Task0.V4
         {
             try
             {
-                // Основная статистика
+               
                 var booksStats = _dataService.GetBooksStatistics();
                 var booksCount = _dataService.GetBooksCount();
                 var readersCount = _dataService.GetReadersCount();
                 var activeLoansCount = _dataService.GetActiveLoansCount();
                 var totalLoans = _dataService.GetBookLoans().Count;
 
-                // Обновляем метки
+                
                 labelTotalBooks_ARI.Text = $"Всего книг: {booksStats.Count}";
                 labelTotalReaders_ARI.Text = $"Всего читателей: {readersCount}";
                 labelActiveLoansStat_ARI.Text = $"Активных выдач: {activeLoansCount}";
@@ -32,7 +33,7 @@ namespace Tyuiu.AtanaevRI.Sprint7.Task0.V4
                 labelAvgBookPrice_ARI.Text = $"Средняя цена книги: {booksStats.AveragePrice:C}";
                 labelTotalBooksValue_ARI.Text = $"Общая стоимость фонда: {booksStats.TotalPrice:C}";
 
-                // Статистика по годам издания
+               
                 var booksByYear = _dataService.GetBooksCountByYear();
                 chartBooksByYear_ARI.Series["Книги"].Points.Clear();
                 foreach (var item in booksByYear)
@@ -40,15 +41,15 @@ namespace Tyuiu.AtanaevRI.Sprint7.Task0.V4
                     chartBooksByYear_ARI.Series["Книги"].Points.AddXY(item.Key, item.Value);
                 }
 
-                // Статистика по авторам
+                
                 var booksByAuthor = _dataService.GetBooksCountByAuthor();
                 chartBooksByAuthor_ARI.Series["Книги"].Points.Clear();
-                foreach (var item in booksByAuthor.Take(10)) // Показываем топ-10 авторов
+                foreach (var item in booksByAuthor.Take(10)) 
                 {
                     chartBooksByAuthor_ARI.Series["Книги"].Points.AddXY(item.Key, item.Value);
                 }
 
-                // Статистика выдач по месяцам за текущий год
+               
                 var loansByMonth = _dataService.GetLoansByMonth(DateTime.Now.Year);
                 chartLoansByMonth_ARI.Series["Выдачи"].Points.Clear();
                 foreach (var item in loansByMonth)
@@ -56,15 +57,50 @@ namespace Tyuiu.AtanaevRI.Sprint7.Task0.V4
                     chartLoansByMonth_ARI.Series["Выдачи"].Points.AddXY(item.Key, item.Value);
                 }
 
-                // Заполняем таблицу с топ книгами
+              
+                ApplyChartType();
+
+          
                 FillTopBooksTable();
 
-                // Заполняем таблицу с активными читателями
                 FillActiveReadersTable();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Ошибка загрузки статистики: {ex.Message}", "Ошибка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ApplyChartType()
+        {
+            try
+            {
+                if (comboBoxChartType_ARI.SelectedIndex == 0) 
+                {
+               
+                    chartBooksByYear_ARI.Series["Книги"].ChartType = SeriesChartType.Column;
+                    chartBooksByYear_ARI.Visible = true;
+
+              
+                    chartBooksByAuthor_ARI.Visible = false;
+                    chartLoansByMonth_ARI.Visible = false;
+                }
+                else if (comboBoxChartType_ARI.SelectedIndex == 1)   
+                {
+                  
+                    chartBooksByYear_ARI.Series["Книги"].ChartType = SeriesChartType.Pie;
+                    chartBooksByAuthor_ARI.Series["Книги"].ChartType = SeriesChartType.Pie;
+                    chartLoansByMonth_ARI.Series["Выдачи"].ChartType = SeriesChartType.Pie;
+
+                    chartBooksByYear_ARI.Visible = true;
+                    chartBooksByAuthor_ARI.Visible = true;
+                    chartLoansByMonth_ARI.Visible = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка применения типа графика: {ex.Message}", "Ошибка",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -149,8 +185,7 @@ namespace Tyuiu.AtanaevRI.Sprint7.Task0.V4
 
                     if (saveFileDialog.ShowDialog() == DialogResult.OK)
                     {
-                        // В реальном проекте здесь был бы код экспорта в PDF
-                        // Для простоты создаем текстовый файл
+                       
                         var lines = new List<string>
                         {
                             "СТАТИСТИКА БИБЛИОТЕКИ",
@@ -197,35 +232,15 @@ namespace Tyuiu.AtanaevRI.Sprint7.Task0.V4
 
         private void ComboBoxChartType_ARI_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try
-            {
-                switch (comboBoxChartType_ARI.SelectedIndex)
-                {
-                    case 0: // Столбчатая диаграмма
-                        chartBooksByYear_ARI.Series["Книги"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
-                        chartBooksByAuthor_ARI.Series["Книги"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
-                        chartLoansByMonth_ARI.Series["Выдачи"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
-                        break;
-                    case 1: // Линейный график
-                        chartBooksByYear_ARI.Series["Книги"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-                        chartBooksByAuthor_ARI.Series["Книги"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-                        chartLoansByMonth_ARI.Series["Выдачи"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-                        break;
-                    case 2: // Круговая диаграмма
-                        chartBooksByYear_ARI.Series["Книги"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-                        chartBooksByAuthor_ARI.Series["Книги"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-                        chartLoansByMonth_ARI.Series["Выдачи"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-                        break;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ошибка изменения типа графика: {ex.Message}", "Ошибка",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            ApplyChartType();
         }
 
         private void FormStatistics_ARI_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chartBooksByYear_ARI_Click(object sender, EventArgs e)
         {
 
         }

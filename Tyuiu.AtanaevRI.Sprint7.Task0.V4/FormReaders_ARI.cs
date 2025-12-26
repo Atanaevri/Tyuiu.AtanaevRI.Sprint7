@@ -198,16 +198,16 @@ namespace Tyuiu.AtanaevRI.Sprint7.Task0.V4
             {
                 switch (comboBoxSortReader_ARI.SelectedIndex)
                 {
-                    case 0: // По ФИО (А-Я)
+                    case 0: 
                         _currentReaders = _currentReaders.OrderBy(r => r.FullName).ToList();
                         break;
-                    case 1: // По ФИО (Я-А)
+                    case 1: 
                         _currentReaders = _currentReaders.OrderByDescending(r => r.FullName).ToList();
                         break;
-                    case 2: // По номеру билета (возрастание)
+                    case 2:
                         _currentReaders = _currentReaders.OrderBy(r => r.CardNumber).ToList();
                         break;
-                    case 3: // По номеру билета (убывание)
+                    case 3: 
                         _currentReaders = _currentReaders.OrderByDescending(r => r.CardNumber).ToList();
                         break;
                 }

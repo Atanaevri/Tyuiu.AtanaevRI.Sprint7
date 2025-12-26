@@ -15,18 +15,18 @@ namespace Tyuiu.AtanaevRI.Sprint7.Task0.V4
 
             if (reader != null)
             {
-                // Заполняем поля существующими данными
+                
                 textBoxCardNumber.Text = reader.CardNumber;
                 textBoxFullName.Text = reader.FullName;
                 textBoxAddress.Text = reader.Address;
                 textBoxPhone.Text = reader.Phone;
 
-                // Запрещаем редактирование номера билета при редактировании
+               
                 textBoxCardNumber.ReadOnly = true;
             }
             else
             {
-                // Режим добавления нового читателя
+               
                 Text = "Добавление нового читателя";
             }
         }
@@ -44,7 +44,7 @@ namespace Tyuiu.AtanaevRI.Sprint7.Task0.V4
 
         private void ButtonSave_Click(object sender, EventArgs e)
         {
-            // Проверка заполнения обязательных полей
+           
             if (string.IsNullOrWhiteSpace(textBoxCardNumber.Text))
             {
                 MessageBox.Show("Введите номер билета!", "Ошибка",

@@ -9,16 +9,15 @@ namespace Tyuiu.AtanaevRI.Sprint7.Task0.V4.Lib.Services
         {
             var books = new List<Book>();
 
-            // Если файл не существует - создаем пустой
             if (!File.Exists(filePath))
             {
-                // Создаем файл с заголовками
+           
                 File.WriteAllLines(filePath, new[] { "Id;Author;Title;Year;Price;IsNewEdition;Annotation" });
                 return books;
             }
 
             var lines = File.ReadAllLines(filePath);
-            for (int i = 1; i < lines.Length; i++) // Пропускаем заголовок (первую строку)
+            for (int i = 1; i < lines.Length; i++) 
             {
                 var values = lines[i].Split(';');
                 if (values.Length >= 7)

@@ -313,6 +313,7 @@ namespace Tyuiu.AtanaevRI.Sprint7.Task0.V4
             chartBooksByYear_ARI.Size = new Size(932, 259);
             chartBooksByYear_ARI.TabIndex = 0;
             chartBooksByYear_ARI.Text = "Книги по годам издания";
+            chartBooksByYear_ARI.Click += chartBooksByYear_ARI_Click;
             // 
             // chartBooksByAuthor_ARI
             // 
@@ -495,7 +496,7 @@ namespace Tyuiu.AtanaevRI.Sprint7.Task0.V4
             // 
             comboBoxChartType_ARI.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxChartType_ARI.FormattingEnabled = true;
-            comboBoxChartType_ARI.Items.AddRange(new object[] { "Столбчатая диаграмма", "Линейный график", "Круговая диаграмма" });
+            comboBoxChartType_ARI.Items.AddRange(new object[] { "Столбчатая диаграмма", "Круговая диаграмма" });
             comboBoxChartType_ARI.Location = new Point(800, 16);
             comboBoxChartType_ARI.Margin = new Padding(3, 4, 3, 4);
             comboBoxChartType_ARI.Name = "comboBoxChartType_ARI";

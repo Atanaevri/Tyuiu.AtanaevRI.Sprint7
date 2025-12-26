@@ -6,7 +6,7 @@ namespace Tyuiu.AtanaevRI.Sprint7.Task0.V4
     public partial class FormBooks_ARI : Form
     {
         private DataService _dataService;
-        private List<Book> _currentBooks = new List<Book>(); // Инициализируем здесь
+        private List<Book> _currentBooks = new List<Book>();  
 
         public FormBooks_ARI(DataService dataService)
         {
@@ -20,7 +20,7 @@ namespace Tyuiu.AtanaevRI.Sprint7.Task0.V4
         private void LoadBooks()
         {
             _currentBooks = _dataService.GetBooks();
-            dataGridViewBooks_ARI.DataSource = null; // Сначала очищаем
+            dataGridViewBooks_ARI.DataSource = null; 
             dataGridViewBooks_ARI.DataSource = _currentBooks;
             UpdateBooksCount();
         }
@@ -30,7 +30,7 @@ namespace Tyuiu.AtanaevRI.Sprint7.Task0.V4
             dataGridViewBooks_ARI.AutoGenerateColumns = false;
             dataGridViewBooks_ARI.Columns.Clear();
 
-            // Настройка колонок
+              
             dataGridViewBooks_ARI.Columns.Add(new DataGridViewTextBoxColumn()
             {
                 DataPropertyName = "Id",
@@ -74,7 +74,6 @@ namespace Tyuiu.AtanaevRI.Sprint7.Task0.V4
                 Width = 100
             });
 
-            // Колонка для аннотации
             dataGridViewBooks_ARI.Columns.Add(new DataGridViewTextBoxColumn()
             {
                 DataPropertyName = "Annotation",
@@ -108,7 +107,7 @@ namespace Tyuiu.AtanaevRI.Sprint7.Task0.V4
                 if (form.ShowDialog() == DialogResult.OK)
                 {
                     var book = form.GetBook();
-                    // Автоматически генерируем ID
+                    
                     book.Id = _currentBooks.Count > 0 ? _currentBooks.Max(b => b.Id) + 1 : 1;
                     _dataService.AddBook(book);
                     LoadBooks();
@@ -223,22 +222,22 @@ namespace Tyuiu.AtanaevRI.Sprint7.Task0.V4
             {
                 switch (comboBoxSortBook_ARI.SelectedIndex)
                 {
-                    case 0: // По названию (А-Я)
+                    case 0: 
                         _currentBooks = _dataService.SortBooksByTitle(true);
                         break;
-                    case 1: // По названию (Я-А)
+                    case 1: 
                         _currentBooks = _dataService.SortBooksByTitle(false);
                         break;
-                    case 2: // По году (возрастание)
+                    case 2: 
                         _currentBooks = _dataService.SortBooksByYear(true);
                         break;
-                    case 3: // По году (убывание)
+                    case 3: 
                         _currentBooks = _dataService.SortBooksByYear(false);
                         break;
-                    case 4: // По цене (возрастание)
+                    case 4:
                         _currentBooks = _dataService.SortBooksByPrice(true);
                         break;
-                    case 5: // По цене (убывание)
+                    case 5:
                         _currentBooks = _dataService.SortBooksByPrice(false);
                         break;
                 }
@@ -293,7 +292,7 @@ namespace Tyuiu.AtanaevRI.Sprint7.Task0.V4
 
         private void FormBooks_ARI_Load(object sender, EventArgs e)
         {
-            // Установим первую сортировку по умолчанию
+           
             if (comboBoxSortBook_ARI.Items.Count > 0)
                 comboBoxSortBook_ARI.SelectedIndex = 0;
         }

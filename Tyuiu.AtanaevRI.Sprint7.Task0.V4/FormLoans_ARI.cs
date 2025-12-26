@@ -127,7 +127,7 @@ namespace Tyuiu.AtanaevRI.Sprint7.Task0.V4
                 var selectedBook = _allBooks[comboBoxBook_ARI.SelectedIndex];
                 var selectedReader = _allReaders[comboBoxReader_ARI.SelectedIndex];
 
-                // Проверяем, не выдана ли уже эта книга
+     
                 var activeLoan = _currentLoans.FirstOrDefault(l =>
                     l.BookTitle == selectedBook.Title && l.ReturnDate == null);
 
@@ -280,16 +280,16 @@ namespace Tyuiu.AtanaevRI.Sprint7.Task0.V4
             {
                 switch (comboBoxFilterStatus_ARI.SelectedIndex)
                 {
-                    case 0: // Все
+                    case 0: 
                         dataGridViewLoans_ARI.DataSource = null;
                         dataGridViewLoans_ARI.DataSource = _currentLoans;
                         break;
-                    case 1: // Активные (не возвращенные)
+                    case 1: 
                         var active = _currentLoans.Where(l => l.ReturnDate == null).ToList();
                         dataGridViewLoans_ARI.DataSource = null;
                         dataGridViewLoans_ARI.DataSource = active;
                         break;
-                    case 2: // Возвращенные
+                    case 2: 
                         var returned = _currentLoans.Where(l => l.ReturnDate != null).ToList();
                         dataGridViewLoans_ARI.DataSource = null;
                         dataGridViewLoans_ARI.DataSource = returned;

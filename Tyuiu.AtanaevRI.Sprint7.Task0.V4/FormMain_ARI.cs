@@ -11,21 +11,13 @@ namespace Tyuiu.AtanaevRI.Sprint7.Task0.V4
         public FormMain_ARI()
         {
             InitializeComponent();
-            // Устанавливаем системные иконки для кнопок
-            buttonBooks_ARI.Image = SystemIcons.Application.ToBitmap();
-            buttonReaders_ARI.Image = SystemIcons.Information.ToBitmap();
-            buttonLoans_ARI.Image = SystemIcons.Question.ToBitmap();
-            buttonStatistics_ARI.Image = SystemIcons.Warning.ToBitmap();
-
+            
             buttonExit_ARI.Image = SystemIcons.Error.ToBitmap();
 
-            // Для меню
-
-            menuItemExit_ARI.Image = SystemIcons.Error.ToBitmap();
+           
             menuItemAbout_ARI.Image = SystemIcons.Information.ToBitmap();
 
-            // Логотип (опционально)
-            pictureBoxLogo_ARI.Image = SystemIcons.Application.ToBitmap();
+           
             InitializeApplication();
         }
 
@@ -59,7 +51,7 @@ namespace Tyuiu.AtanaevRI.Sprint7.Task0.V4
         private void SetupToolTips()
         {
 
-            // Для ToolStripButton используем свойство ToolTipText
+        
             buttonBooks_ARI.ToolTipText = "Управление книгами";
             buttonReaders_ARI.ToolTipText = "Управление читателями";
             buttonLoans_ARI.ToolTipText = "Выдача/возврат книг";
@@ -67,10 +59,7 @@ namespace Tyuiu.AtanaevRI.Sprint7.Task0.V4
             buttonSave_ARI.ToolTipText = "Сохранить все данные";
             buttonExit_ARI.ToolTipText = "Выход из программы";
 
-            // Если есть обычные контролы (кнопки, текстбоксы и т.д.), используй обычный ToolTip
-            // Например:
-            // var toolTip = new ToolTip();
-            // toolTip.SetToolTip(someControl, "Подсказка");
+          
         }
 
 

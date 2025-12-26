@@ -14,7 +14,7 @@ namespace Tyuiu.AtanaevRI.Sprint7.Task0.V4.Lib
         {
         }
 
-        // Загрузка данных из файлов
+        
         public void LoadData(string booksPath, string readersPath, string loansPath)
         {
             _books = _fileService.LoadBooks(booksPath);
@@ -22,7 +22,7 @@ namespace Tyuiu.AtanaevRI.Sprint7.Task0.V4.Lib
             _bookLoans = _fileService.LoadBookLoans(loansPath);
         }
 
-        // Сохранение данных в файлы
+      
         public void SaveData(string booksPath, string readersPath, string loansPath)
         {
             _fileService.SaveBooks(booksPath, _books);
@@ -30,7 +30,7 @@ namespace Tyuiu.AtanaevRI.Sprint7.Task0.V4.Lib
             _fileService.SaveBookLoans(loansPath, _bookLoans);
         }
 
-        // --- Работа с книгами ---
+    
         public void AddBook(Book book)
         {
             if (book.Id == 0)
@@ -63,7 +63,7 @@ namespace Tyuiu.AtanaevRI.Sprint7.Task0.V4.Lib
 
         public Book? GetBookById(int id) => _books.FirstOrDefault(b => b.Id == id);
 
-        // --- Работа с читателями ---
+      
         public void AddReader(Reader reader) => _readers.Add(reader);
 
         public void UpdateReader(Reader reader)
@@ -90,7 +90,7 @@ namespace Tyuiu.AtanaevRI.Sprint7.Task0.V4.Lib
         public Reader? GetReaderByCard(string cardNumber) =>
             _readers.FirstOrDefault(r => r.CardNumber == cardNumber);
 
-        // --- Работа с выдачами книг ---
+       
         public void AddBookLoan(BookLoan loan)
         {
             if (loan.Id == 0)
@@ -114,7 +114,7 @@ namespace Tyuiu.AtanaevRI.Sprint7.Task0.V4.Lib
         public List<BookLoan> GetActiveLoans() =>
             _bookLoans.Where(l => l.ReturnDate == null).ToList();
 
-        // --- Поиск ---
+      
         public List<Book> SearchBooks(string keyword)
         {
             if (string.IsNullOrWhiteSpace(keyword))
@@ -140,7 +140,7 @@ namespace Tyuiu.AtanaevRI.Sprint7.Task0.V4.Lib
                 r.Phone.Contains(keyword)).ToList();
         }
 
-        // --- Сортировка ---
+        
         public List<Book> SortBooksByTitle(bool ascending = true)
         {
             return ascending ?
@@ -162,7 +162,7 @@ namespace Tyuiu.AtanaevRI.Sprint7.Task0.V4.Lib
                 _books.OrderByDescending(b => b.Price).ToList();
         }
 
-        // --- Фильтрация ---
+        
         public List<Book> FilterBooksByAuthor(string author)
         {
             return _books.Where(b => b.Author.Equals(author, StringComparison.OrdinalIgnoreCase)).ToList();
@@ -178,7 +178,7 @@ namespace Tyuiu.AtanaevRI.Sprint7.Task0.V4.Lib
             return _books.Where(b => b.Year >= minYear && b.Year <= maxYear).ToList();
         }
 
-        // --- Статистика ---
+
         public (int Count, decimal TotalPrice, decimal AveragePrice, decimal MinPrice, decimal MaxPrice)
             GetBooksStatistics()
         {
@@ -207,7 +207,7 @@ namespace Tyuiu.AtanaevRI.Sprint7.Task0.V4.Lib
         public int GetBooksByAuthor(string author) =>
             _books.Count(b => b.Author.Equals(author, StringComparison.OrdinalIgnoreCase));
 
-        // --- Графики ---
+
         public Dictionary<string, int> GetBooksCountByAuthor()
         {
             return _books

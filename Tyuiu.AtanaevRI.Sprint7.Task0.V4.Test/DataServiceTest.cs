@@ -10,7 +10,7 @@ namespace Tyuiu.AtanaevRI.Sprint7.Task0.V4.Test
         public void TestBookStatistics()
         {
             var service = new DataService();
-            // Добавим книги через сервис
+            
             service.AddBook(new Book { Id = 1, Price = 100 });
             service.AddBook(new Book { Id = 2, Price = 200 });
             service.AddBook(new Book { Id = 3, Price = 300 });
