@@ -18,6 +18,7 @@ namespace Tyuiu.AtanaevRI.Sprint7.Task0.V4
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain_ARI));
             menuStripMain_ARI = new MenuStrip();
             menuItemFile_ARI = new ToolStripMenuItem();
             menuItemSave_ARI = new ToolStripMenuItem();
@@ -119,33 +120,37 @@ namespace Tyuiu.AtanaevRI.Sprint7.Task0.V4
             // 
             // buttonBooks_ARI
             // 
+            buttonBooks_ARI.Image = (Image)resources.GetObject("buttonBooks_ARI.Image");
             buttonBooks_ARI.ImageTransparentColor = Color.Magenta;
             buttonBooks_ARI.Name = "buttonBooks_ARI";
-            buttonBooks_ARI.Size = new Size(55, 24);
+            buttonBooks_ARI.Size = new Size(75, 24);
             buttonBooks_ARI.Text = "Книги";
             buttonBooks_ARI.Click += ButtonBooks_ARI_Click;
             // 
             // buttonReaders_ARI
             // 
+            buttonReaders_ARI.Image = (Image)resources.GetObject("buttonReaders_ARI.Image");
             buttonReaders_ARI.ImageTransparentColor = Color.Magenta;
             buttonReaders_ARI.Name = "buttonReaders_ARI";
-            buttonReaders_ARI.Size = new Size(77, 24);
+            buttonReaders_ARI.Size = new Size(97, 24);
             buttonReaders_ARI.Text = "Читатели";
             buttonReaders_ARI.Click += ButtonReaders_ARI_Click;
             // 
             // buttonLoans_ARI
             // 
+            buttonLoans_ARI.Image = (Image)resources.GetObject("buttonLoans_ARI.Image");
             buttonLoans_ARI.ImageTransparentColor = Color.Magenta;
             buttonLoans_ARI.Name = "buttonLoans_ARI";
-            buttonLoans_ARI.Size = new Size(65, 24);
+            buttonLoans_ARI.Size = new Size(85, 24);
             buttonLoans_ARI.Text = "Выдача";
             buttonLoans_ARI.Click += ButtonLoans_ARI_Click;
             // 
             // buttonStatistics_ARI
             // 
+            buttonStatistics_ARI.Image = (Image)resources.GetObject("buttonStatistics_ARI.Image");
             buttonStatistics_ARI.ImageTransparentColor = Color.Magenta;
             buttonStatistics_ARI.Name = "buttonStatistics_ARI";
-            buttonStatistics_ARI.Size = new Size(88, 24);
+            buttonStatistics_ARI.Size = new Size(108, 24);
             buttonStatistics_ARI.Text = "Статистика";
             buttonStatistics_ARI.Click += ButtonStatistics_ARI_Click;
             // 
@@ -302,10 +307,11 @@ namespace Tyuiu.AtanaevRI.Sprint7.Task0.V4
             // pictureBoxLogo_ARI
             // 
             pictureBoxLogo_ARI.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            pictureBoxLogo_ARI.Location = new Point(919, 16);
+            pictureBoxLogo_ARI.Image = (Image)resources.GetObject("pictureBoxLogo_ARI.Image");
+            pictureBoxLogo_ARI.Location = new Point(923, 16);
             pictureBoxLogo_ARI.Margin = new Padding(3, 4, 3, 4);
             pictureBoxLogo_ARI.Name = "pictureBoxLogo_ARI";
-            pictureBoxLogo_ARI.Size = new Size(192, 109);
+            pictureBoxLogo_ARI.Size = new Size(188, 109);
             pictureBoxLogo_ARI.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBoxLogo_ARI.TabIndex = 1;
             pictureBoxLogo_ARI.TabStop = false;
@@ -316,9 +322,10 @@ namespace Tyuiu.AtanaevRI.Sprint7.Task0.V4
             labelWelcome_ARI.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
             labelWelcome_ARI.Location = new Point(14, 40);
             labelWelcome_ARI.Name = "labelWelcome_ARI";
-            labelWelcome_ARI.Size = new Size(473, 46);
+            labelWelcome_ARI.Size = new Size(397, 46);
             labelWelcome_ARI.TabIndex = 0;
-            labelWelcome_ARI.Text = "Библиотечная система v4.0";
+            labelWelcome_ARI.Text = "Библиотечная система\r\n";
+            labelWelcome_ARI.Click += labelWelcome_ARI_Click;
             // 
             // FormMain_ARI
             // 

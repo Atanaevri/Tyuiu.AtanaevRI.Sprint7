@@ -16,11 +16,11 @@ namespace Tyuiu.AtanaevRI.Sprint7.Task0.V4.Test
             service.AddBook(new Book { Id = 3, Price = 300 });
 
             var stats = service.GetBooksStatistics();
-            Assert.AreEqual(3, stats.count);
-            Assert.AreEqual(600, stats.total);
-            Assert.AreEqual(200, stats.avg);
-            Assert.AreEqual(100, stats.min);
-            Assert.AreEqual(300, stats.max);
+            Assert.AreEqual(3, stats.Count);
+            Assert.AreEqual(600, stats.TotalPrice);
+            Assert.AreEqual(200, stats.AveragePrice);
+            Assert.AreEqual(100, stats.MinPrice);
+            Assert.AreEqual(300, stats.MaxPrice);
         }
 
         [TestMethod]

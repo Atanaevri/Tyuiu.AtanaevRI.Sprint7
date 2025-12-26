@@ -190,6 +190,11 @@ namespace Tyuiu.AtanaevRI.Sprint7.Task0.V4
         {
 
         }
+
+        private void labelWelcome_ARI_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

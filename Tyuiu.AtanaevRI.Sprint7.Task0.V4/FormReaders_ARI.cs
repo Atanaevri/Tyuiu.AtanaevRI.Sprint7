@@ -265,5 +265,15 @@ namespace Tyuiu.AtanaevRI.Sprint7.Task0.V4
             if (comboBoxSortReader_ARI.Items.Count > 0)
                 comboBoxSortReader_ARI.SelectedIndex = 0;
         }
+
+        private void checkBox1_ChechedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

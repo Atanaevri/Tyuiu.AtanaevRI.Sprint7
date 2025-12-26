@@ -31,7 +31,6 @@
             buttonEditReader_ARI = new Button();
             buttonDeleteReader_ARI = new Button();
             dataGridViewReaders_ARI = new DataGridView();
-            checkBox1 = new CheckBox();
             panelReadersTop_ARI.SuspendLayout();
             panelReadersButtons_ARI.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewReaders_ARI).BeginInit();
@@ -39,7 +38,6 @@
             // 
             // panelReadersTop_ARI
             // 
-            panelReadersTop_ARI.Controls.Add(checkBox1);
             panelReadersTop_ARI.Controls.Add(buttonExportReaders_ARI);
             panelReadersTop_ARI.Controls.Add(buttonRefreshReaders_ARI);
             panelReadersTop_ARI.Controls.Add(comboBoxSortReader_ARI);
@@ -211,16 +209,6 @@
             dataGridViewReaders_ARI.TabIndex = 2;
             dataGridViewReaders_ARI.CellDoubleClick += DataGridViewReaders_ARI_CellDoubleClick;
             // 
-            // checkBox1
-            // 
-            checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(690, 102);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(101, 24);
-            checkBox1.TabIndex = 8;
-            checkBox1.Text = "checkBox1";
-            checkBox1.UseVisualStyleBackColor = true;
-            // 
             // FormReaders_ARI
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -258,6 +246,5 @@
         private Label labelSortBy_ARI;
         private Button buttonRefreshReaders_ARI;
         private Button buttonExportReaders_ARI;
-        private CheckBox checkBox1;
     }
 }
